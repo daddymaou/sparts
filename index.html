@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en" data-page="home">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+  <title>Spare Parts — a small dev collective</title>
+  <meta name="description" content="Spare Parts is a small Nigerian dev collective making useful software and odd experiments.">
+  <meta name="theme-color" content="#f5f1e8">
+  <link rel="canonical" href="https://spareparts.dev/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spareparts.dev/">
+  <meta property="og:title" content="Spare Parts — software from a slightly messy desk">
+  <meta property="og:description" content="A home on the internet for a small Nigerian dev collective.">
+  <meta property="og:image" content="assets/media/photos/shared-table.webp">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Spare Parts — a small dev collective">
+  <meta name="twitter:description" content="A home on the internet for a small Nigerian dev collective.">
+  <meta name="twitter:image" content="assets/media/photos/shared-table.webp">
+
+  <!-- Inline theme script — prevents flash of wrong theme -->
+  <script>
+    (function () {
+      try {
+        var KEY = "spare-parts:theme";
+        var saved = localStorage.getItem(KEY);
+        var system = matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = (saved === "day" || saved === "night")
+          ? saved
+          : (system ? "night" : "day");
+        document.documentElement.dataset.theme = theme;
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", theme === "night" ? "#0a0a0a" : "#f5f1e8");
+        document.documentElement.classList.add("theme-ready");
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="icon" href="assets/svg/mark.svg">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/path.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/doodles.css">
+
+  <noscript>
+    <style>
+      .preloader { display: none !important; }
+      .site-menu { display: none !important; }
+      .data-media { display: none !important; }
+    </style>
+  </noscript>
+</head>
+<body>
+
+  <svg class="svg-defs" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute">
+    <defs>
+      <filter id="roughen">
+        <feTurbulence type="fractalNoise" baseFrequency=".025" numOctaves="2" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="2"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <div class="preloader" id="preloader" role="status" aria-live="polite">
+    <div class="preloader__mark">SPARE PARTS</div>
+    <p class="mono">booting the little desk</p>
+  </div>
+
+  <div class="site-grain" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Spare Parts — home">
+      <span class="brand-mark" aria-hidden="true">SP</span>
+      <span>SPARE PARTS<small>software from a small desk</small></span>
+    </a>
+    <div class="header-aside">
+      <span class="mono">LAGOS / NIGERIA</span>
+      <label class="lowdata-control">
+        <input id="lowDataToggle" type="checkbox">
+        <span>low-data</span>
+      </label>
+      <button class="menu-button" id="menuButton" type="button"
+              aria-expanded="false" aria-controls="siteMenu" aria-haspopup="true">
+        menu
+      </button>
+    </div>
+  </header>
+
+  <nav class="tab-rail" aria-label="Main navigation">
+    <a href="index.html" aria-current="page">home</a>
+    <a href="work.html">work</a>
+    <a href="lab.html">lab</a>
+    <a href="notes.html">notes</a>
+    <a href="hang.html">hang</a>
+  </nav>
+
+  <div class="site-menu" id="siteMenu" aria-hidden="true" role="dialog" aria-label="Site menu">
+    <div class="site-menu__inner">
+      <div>
+        <p class="eyebrow">small dev collective / lagos</p>
+        <p class="menu-intro">A desk, a few good people, and too many tabs open.</p>
+      </div>
+      <nav aria-label="Menu">
+        <a href="index.html" aria-current="page">home</a>
+        <a href="work.html">work</a>
+        <a href="lab.html">lab</a>
+        <a href="notes.html">notes</a>
+        <a href="hang.html">hang</a>
+      </nav>
+      <div class="site-menu__footer">
+        <span class="mono">built by humans / mostly after lunch</span>
+        <a href="https://github.com/daddymaou/sparts" target="_blank" rel="noopener noreferrer">github ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main" tabindex="-1">
+
+    <!-- HERO -->
+    <section class="container home-hero">
+      <div class="home-hero__copy">
+        <p class="eyebrow">hello from the noisy side of the internet</p>
+        <h1>We make things <em>work-ish.</em></h1>
+        <p class="body-copy">Spare Parts is a small Nigerian dev collective. We build useful software, strange prototypes, and the occasional thing that begins with “this should be quick”.</p>
+        <div class="hero-actions">
+          <a class="button button--primary magnetic" href="work.html">See the work <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="hang.html">Come say hi <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="margin-note">* yes, the name is from a drawer full of cables.</p>
+      </div>
+      <figure class="hero-photo">
+        <div class="hero-photo__scribble"></div>
+        <span class="hero-photo__tape"></span>
+        <div class="hero-photo__frame">
+          <video class="data-media"
+                 data-src="assets/media/video/sorting-room.mp4"
+                 poster="assets/media/posters/sorting-room.jpg"
+                 muted loop playsinline preload="none"
+                 aria-label="Muted video of a moving work surface">
+            <noscript>
+              <img src="assets/media/posters/sorting-room.jpg" alt="A moving work surface">
+            </noscript>
+          </video>
+        </div>
+        <figcaption class="hero-photo__note">the desk where<br>the sensible ideas<br>go to become side quests.</figcaption>
+      </figure>
+    </section>
+
+    <!-- INTRO -->
+    <section class="home-intro section-pad">
+      <div class="container home-intro__grid">
+        <div>
+          <p class="eyebrow">what we are up to</p>
+          <h2>Small team.<br><em>Big browser tabs.</em></h2>
+        </div>
+        <div class="home-intro__copy">
+          <p class="body-copy">We like the bit before the pitch deck. The rough sketch. The “wait, why does this button do that?” We ship small, learn in public, and keep enough room for a proper suya break.</p>
+          <p class="home-intro__scribble">no mysterious black boxes, please ↗</p>
+        </div>
+      </div>
+      <div class="container home-media-strip">
+        <figure>
+          <img loading="lazy" src="assets/media/photos/shared-table.webp" width="1200" height="800" alt="People gathered around a shared work table">
+          <figcaption>people, not personas</figcaption>
+        </figure>
+        <figure>
+          <img loading="lazy" src="assets/media/photos/phone-hotspot.webp" width="1200" height="800" alt="A person working with a phone nearby">
+          <figcaption>hotspot is a coworker</figcaption>
+        </figure>
+        <figure>
+          <img loading="lazy" src="assets/media/photos/coffee-code.webp" width="1200" height="800" alt="Laptop and coffee on a desk">
+          <figcaption>coffee compiles faster</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- PATH / NODES -->
+    <section class="container section-pad">
+      <div class="page-hero__intro">
+        <div>
+          <p class="eyebrow">follow the scribble</p>
+          <h2 class="scribble-underline">Start anywhere.</h2>
+        </div>
+        <p>There is no perfect order here. Click a node, follow the bus, or wander off into the lab like a normal person.</p>
+      </div>
+
+      <div class="path-wrap" id="pathWrap" tabindex="0" aria-label="Navigate the path">
+        <svg class="path-svg" id="pathSvg" aria-hidden="true" focusable="false">
+          <path class="path-line path-line--base" id="pathBase"></path>
+          <path class="path-line path-line--progress" id="pathProgress"></path>
+          <g class="path-bus" id="pathBus">
+            <rect x="-18" y="-9" width="36" height="18" rx="4"></rect>
+            <path d="M-11-3h4M-2-3h4M7-3h4M-12 7h4M8 7h4"></path>
+            <circle cx="-9" cy="9" r="2.2"></circle>
+            <circle cx="9" cy="9" r="2.2"></circle>
+          </g>
+        </svg>
+
+        <div class="path-node" data-node="desk">
+          <a class="path-node__card" href="work.html" aria-label="See the work">
+            <div class="path-node__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="12" rx="1"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <h3>See the work</h3>
+            <p>Things we built, things we broke, and the lesson that survived the deploy.</p>
+          </a>
+        </div>
+
+        <div class="path-node" data-node="lab">
+          <a class="path-node__card" href="lab.html" aria-label="Play in the lab">
+            <div class="path-node__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="m12 3 1.5 5.2L19 10l-5.5 2.1L12 18l-1.5-5.9L5 10l5.5-1.8z"/><path d="m19 3 .5 1.5L21 5l-1.5.5L19 7l-.5-1.5L17 5l1.5-.5z"/></svg>
+            </div>
+            <h3>Play in the lab</h3>
+            <p>Doodles, excuses, a danfo board, and one toy made at an unreasonable hour.</p>
+          </a>
+        </div>
+
+        <div class="path-node" data-node="notes">
+          <a class="path-node__card" href="notes.html" aria-label="Read the notes">
+            <div class="path-node__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h5M8 16h8"/></svg>
+            </div>
+            <h3>Read the notes</h3>
+            <p>Short devlog posts from the place where “it works on my machine” goes to apologise.</p>
+          </a>
+        </div>
+
+        <div class="path-node" data-node="hang">
+          <a class="path-node__card" href="hang.html" aria-label="Come hang">
+            <div class="path-node__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 5h16v11H4z"/><path d="m4 6 8 6 8-6M8 20h8"/></svg>
+            </div>
+            <h3>Come hang</h3>
+            <p>Say hi, bring a question, or send a meme that has survived code review.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__switches">
+        <button class="button button--quiet" id="nepaToggle" type="button">cut the light</button>
+        <button class="button button--quiet" id="themeToggle" type="button">night desk</button>
+        <span class="mono">© spare parts / no clients were invented for this page</span>
+      </div>
+      <div class="footer__links">
+        <a href="https://t.me/fwmoau" target="_blank" rel="noopener noreferrer">telegram</a>
+        <a href="https://x.com/fwmaou" target="_blank" rel="noopener noreferrer">x</a>
+        <a href="https://github.com/daddymaou/sparts" target="_blank" rel="noopener noreferrer">github</a>
+        <a href="mailto:daddymaouu@gmail.com">email</a>
+        <a href="humans.txt" rel="author">humans.txt</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
