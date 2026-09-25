@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en" data-page="notes">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+  <title>Notes — Spare Parts</title>
+  <meta name="description" content="Short notes from a Nigerian dev desk: code, data bundles, deploys and the occasional jollof break.">
+  <meta name="theme-color" content="#f5f1e8">
+  <link rel="canonical" href="https://spareparts.dev/notes.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spareparts.dev/notes.html">
+  <meta property="og:title" content="Notes — Spare Parts">
+  <meta property="og:description" content="Short devlog posts from a small Nigerian dev desk.">
+  <meta property="og:image" content="assets/media/photos/night-desk.webp">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Notes — Spare Parts">
+  <meta name="twitter:description" content="Short devlog posts from a small Nigerian dev desk.">
+  <meta name="twitter:image" content="assets/media/photos/night-desk.webp">
+
+  <!-- Inline theme script — prevents flash of wrong theme -->
+  <script>
+    (function () {
+      try {
+        var KEY = "spare-parts:theme";
+        var saved = localStorage.getItem(KEY);
+        var system = matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = (saved === "day" || saved === "night")
+          ? saved
+          : (system ? "night" : "day");
+        document.documentElement.dataset.theme = theme;
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", theme === "night" ? "#0a0a0a" : "#f5f1e8");
+        document.documentElement.classList.add("theme-ready");
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="icon" href="assets/svg/mark.svg">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/path.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/doodles.css">
+
+  <noscript>
+    <style>
+      .preloader { display: none !important; }
+      .site-menu { display: none !important; }
+      .reading-sheet { display: block !important; }
+    </style>
+  </noscript>
+</head>
+<body>
+
+  <svg class="svg-defs" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute">
+    <defs>
+      <filter id="roughen">
+        <feTurbulence type="fractalNoise" baseFrequency=".025" numOctaves="2" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="2"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <div class="preloader" id="preloader" role="status" aria-live="polite">
+    <div class="preloader__mark">THE NOTES</div>
+    <p class="mono">finding the good sentence</p>
+  </div>
+
+  <div class="site-grain" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Spare Parts — home">
+      <span class="brand-mark" aria-hidden="true">SP</span>
+      <span>SPARE PARTS<small>software from a small desk</small></span>
+    </a>
+    <div class="header-aside">
+      <span class="mono">LAGOS / NIGERIA</span>
+      <label class="lowdata-control">
+        <input id="lowDataToggle" type="checkbox">
+        <span>low-data</span>
+      </label>
+      <button class="menu-button" id="menuButton" type="button"
+              aria-expanded="false" aria-controls="siteMenu" aria-haspopup="true">
+        menu
+      </button>
+    </div>
+  </header>
+
+  <nav class="tab-rail" aria-label="Main navigation">
+    <a href="index.html">home</a>
+    <a href="work.html">work</a>
+    <a href="lab.html">lab</a>
+    <a href="notes.html" aria-current="page">notes</a>
+    <a href="hang.html">hang</a>
+  </nav>
+
+  <div class="site-menu" id="siteMenu" aria-hidden="true" role="dialog" aria-label="Site menu">
+    <div class="site-menu__inner">
+      <div>
+        <p class="eyebrow">small dev collective / lagos</p>
+        <p class="menu-intro">A desk, a few good people, and too many tabs open.</p>
+      </div>
+      <nav aria-label="Menu">
+        <a href="index.html">home</a>
+        <a href="work.html">work</a>
+        <a href="lab.html">lab</a>
+        <a href="notes.html" aria-current="page">notes</a>
+        <a href="hang.html">hang</a>
+      </nav>
+      <div class="site-menu__footer">
+        <span class="mono">built by humans / mostly after lunch</span>
+        <a href="https://github.com/daddymaou/sparts" target="_blank" rel="noopener noreferrer">github ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main" tabindex="-1">
+
+    <!-- PAGE HERO -->
+    <section class="container page-hero">
+      <p class="eyebrow">the notebook is open</p>
+      <h1>Notes from<br><em>the messy middle.</em></h1>
+      <div class="page-hero__intro">
+        <span class="margin-note">no “10x” was harmed here.</span>
+        <p>Short things we noticed while building. Some are useful. Some are just what we said after deploying on Friday.</p>
+      </div>
+    </section>
+
+    <!-- NOTES LIST -->
+    <section class="container section-pad" id="notesSection">
+      <div class="sticker-filter" id="noteFilters" role="toolbar" aria-label="Filter notes"></div>
+
+      <p class="mono notes-loading" id="notesLoading">loading notes…</p>
+
+      <div class="notes-grid" id="notesGrid" aria-live="polite" aria-busy="true"></div>
+
+      <!-- No-JS fallback: real, crawlable content -->
+      <noscript>
+        <div class="notes-grid">
+          <article class="note-card">
+            <h3>Notes need JavaScript</h3>
+            <p>This page renders its notes on the client. Enable JavaScript to read them, or email us at <a href="mailto:daddymaouu@gmail.com">daddymaouu@gmail.com</a> for a plain-text version.</p>
+          </article>
+        </div>
+      </noscript>
+    </section>
+
+    <!-- READING SHEET -->
+    <section class="reading-sheet"
+             id="readingSheet"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="readingTitle"
+             aria-describedby="readingBody"
+             hidden>
+      <p class="eyebrow">open note</p>
+      <h2 id="readingTitle"></h2>
+      <div id="readingBody"></div>
+      <button class="text-link" id="closeReading" type="button">back to all notes ←</button>
+    </section>
+
+    <!-- PHOTO -->
+    <section class="container section-pad">
+      <div class="tape-card">
+        <img loading="lazy"
+             src="assets/media/photos/night-desk.webp"
+             width="1200" height="800"
+             alt="A desk lit late at night">
+        <p class="margin-note">the bug was not in the code. it was in the assumption.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__switches">
+        <button class="button button--quiet" id="nepaToggle" type="button">cut the light</button>
+        <button class="button button--quiet" id="themeToggle" type="button">night desk</button>
+      </div>
+      <div class="footer__links">
+        <a href="https://t.me/fwmoau" target="_blank" rel="noopener noreferrer">telegram</a>
+        <a href="https://x.com/fwmaou" target="_blank" rel="noopener noreferrer">x</a>
+        <a href="https://github.com/daddymaou/sparts" target="_blank" rel="noopener noreferrer">github</a>
+        <a href="mailto:daddymaouu@gmail.com">email</a>
+        <a href="humans.txt" rel="author">humans.txt</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
