@@ -1,0 +1,168 @@
+/* ================================================================= */
+/* Design tokens                                                     */
+/* ================================================================= */
+
+:root {
+  color-scheme: light;
+
+  /* ----------------------------------------------------------------- */
+  /* Palette — light (day)                                             */
+  /* ----------------------------------------------------------------- */
+
+  --cream: #f4edda;
+  --cream-soft: #ecf0ed;
+
+  --paper: #fffaf0;
+  --paper-deep: #e4d6b8;
+
+  --ink: #182c48;
+  --ink-soft: #4e5f72;
+
+  --blue: #2459a6;
+  --blue-dark: #16366c;
+
+  --yellow: #f2c84b;
+  --clay: #d95f42;
+  --pink: #ed9b9e;
+  --green: #8eae73;
+
+  --line: rgba(24, 44, 72, 0.25);
+
+  /* ----------------------------------------------------------------- */
+  /* Fixed-contrast pairs — text that sits on saturated backgrounds.   */
+  /* These do NOT change between themes; the background colors do.     */
+  /* ----------------------------------------------------------------- */
+
+  --on-yellow: #182c48;
+  --on-pink: #182c48;
+  --on-green: #182c48;
+  --on-blue: #f4edda;
+
+  /* ----------------------------------------------------------------- */
+  /* Typography                                                        */
+  /* ----------------------------------------------------------------- */
+
+  --display: "Fuzzy Bubbles", "Trebuchet MS", sans-serif;
+  --hand: "Gochi Hand", "Comic Sans MS", cursive;
+  --body: "Nunito", "Trebuchet MS", sans-serif;
+  --mono: "Martian Mono", "Courier New", monospace;
+
+  /* ----------------------------------------------------------------- */
+  /* Spacing + layout                                                  */
+  /* ----------------------------------------------------------------- */
+
+  --gutter: clamp(1.1rem, 4vw, 5rem);
+  --max: 1380px;
+
+  /* Optional spacing scale — adopt incrementally. */
+  --space-xs: 0.4rem;
+  --space-sm: 0.8rem;
+  --space-md: 1.2rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 5rem;
+
+  /* ----------------------------------------------------------------- */
+  /* Motion                                                            */
+  /* ----------------------------------------------------------------- */
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 0.2s;
+  --dur: 0.35s;
+  --dur-slow: 0.65s;
+
+  /* ----------------------------------------------------------------- */
+  /* Z-index scale (adopt incrementally across files)                  */
+  /* ----------------------------------------------------------------- */
+
+  --z-grain: 40;
+  --z-header: 50;
+  --z-tab-rail: 55;
+  --z-menu: 58;
+  --z-menu-button: 60;
+  --z-readout: 70;
+  --z-prompt: 80;
+  --z-power-panel: 90;
+  --z-nepa-overlay: 100;
+  --z-terminal: 120;
+  --z-preloader: 200;
+}
+
+/* ================================================================= */
+/* Night theme                                                       */
+/* ================================================================= */
+
+:root[data-theme="night"] {
+  color-scheme: dark;
+
+  --cream: #182331;
+  --cream-soft: #cbd5dd;
+
+  --paper: #223247;
+  --paper-deep: #111c2a;
+
+  --ink: #f8e9c7;
+  --ink-soft: #b4c0ca;
+
+  --blue: #83b3e9;
+  --blue-dark: #b0cff0;
+
+  --yellow: #f2c84b;
+  --clay: #f08666;
+  --pink: #e8a0a6;
+  --green: #abc985;
+
+  --line: rgba(248, 233, 199, 0.24);
+}
+
+/* ================================================================= */
+/* NEPA mode — layered on top of the current theme                   */
+/* ================================================================= */
+
+body.nepa {
+  color-scheme: dark;
+
+  --cream: #0e1722;
+  --cream-soft: #b8c2ca;
+
+  --paper: #162435;
+  --paper-deep: #0b121c;
+
+  --ink: #e7dbc0;
+  --ink-soft: #99a7b1;
+
+  --blue: #6c96c7;
+  --blue-dark: #a2bedf;
+
+  --yellow: #e8bd56;
+  --clay: #cf6c52;
+  --pink: #b57480;
+  --green: #6b8a58;
+
+  --line: rgba(231, 219, 192, 0.22);
+}
+
+/*
+ * NEPA also needs to override the <html> background, because
+ * `html { background: var(--cream) }` uses the :root value.
+ * :has() is supported in all modern browsers (2023+).
+ */
+html:has(body.nepa) {
+  --cream: #0e1722;
+  background: #0e1722;
+}
+
+/* ================================================================= */
+/* Reference: what NOT to include                                    */
+/* ================================================================= */
+
+/*
+ * Do NOT add a `--rough: url("#roughen")` token unless you actually
+ * apply `filter: var(--rough)` somewhere. HTML elements do not
+ * reliably support SVG filter references in most browsers, and
+ * unused tokens are confusing.
+ *
+ * Do NOT add per-theme `--on-yellow` overrides. Text on yellow is
+ * always dark; the yellow background itself may shift, but the
+ * contrast pair is fixed.
+ */
