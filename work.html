@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en" data-page="work">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+  <title>Work — Spare Parts</title>
+  <meta name="description" content="Things Spare Parts has built, explored and learned from.">
+  <meta name="theme-color" content="#f5f1e8">
+  <link rel="canonical" href="https://spareparts.dev/work.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spareparts.dev/work.html">
+  <meta property="og:title" content="Work — Spare Parts">
+  <meta property="og:description" content="Things we built, things we broke, and the lesson that survived the deploy.">
+  <meta property="og:image" content="assets/media/photos/shared-table.webp">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Work — Spare Parts">
+  <meta name="twitter:description" content="Things we built, things we broke, and the lesson that survived the deploy.">
+  <meta name="twitter:image" content="assets/media/photos/shared-table.webp">
+
+  <!-- Inline theme script — prevents flash of wrong theme -->
+  <script>
+    (function () {
+      try {
+        var KEY = "spare-parts:theme";
+        var saved = localStorage.getItem(KEY);
+        var system = matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = (saved === "day" || saved === "night")
+          ? saved
+          : (system ? "night" : "day");
+        document.documentElement.dataset.theme = theme;
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", theme === "night" ? "#0a0a0a" : "#f5f1e8");
+        document.documentElement.classList.add("theme-ready");
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="icon" href="assets/svg/mark.svg">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/path.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/doodles.css">
+
+  <noscript>
+    <style>
+      .preloader { display: none !important; }
+      .site-menu { display: none !important; }
+      .data-media { display: none !important; }
+    </style>
+  </noscript>
+</head>
+<body>
+
+  <svg class="svg-defs" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute">
+    <defs>
+      <filter id="roughen">
+        <feTurbulence type="fractalNoise" baseFrequency=".025" numOctaves="2" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="2"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <div class="preloader" id="preloader" role="status" aria-live="polite">
+    <div class="preloader__mark">THE WORK</div>
+    <p class="mono">opening the folder</p>
+  </div>
+
+  <div class="site-grain" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Spare Parts — home">
+      <span class="brand-mark" aria-hidden="true">SP</span>
+      <span>SPARE PARTS<small>software from a small desk</small></span>
+    </a>
+    <div class="header-aside">
+      <span class="mono">LAGOS / NIGERIA</span>
+      <label class="lowdata-control">
+        <input id="lowDataToggle" type="checkbox">
+        <span>low-data</span>
+      </label>
+      <button class="menu-button" id="menuButton" type="button"
+              aria-expanded="false" aria-controls="siteMenu" aria-haspopup="true">
+        menu
+      </button>
+    </div>
+  </header>
+
+  <nav class="tab-rail" aria-label="Main navigation">
+    <a href="index.html">home</a>
+    <a href="work.html" aria-current="page">work</a>
+    <a href="lab.html">lab</a>
+    <a href="notes.html">notes</a>
+    <a href="hang.html">hang</a>
+  </nav>
+
+  <div class="site-menu" id="siteMenu" aria-hidden="true" role="dialog" aria-label="Site menu">
+    <div class="site-menu__inner">
+      <div>
+        <p class="eyebrow">small dev collective / lagos</p>
+        <p class="menu-intro">A desk, a few good people, and too many tabs open.</p>
+      </div>
+      <nav aria-label="Menu">
+        <a href="index.html">home</a>
+        <a href="work.html" aria-current="page">work</a>
+        <a href="lab.html">lab</a>
+        <a href="notes.html">notes</a>
+        <a href="hang.html">hang</a>
+      </nav>
+      <div class="site-menu__footer">
+        <span class="mono">built by humans / mostly after lunch</span>
+        <a href="https://github.com/daddymaou/sparts" target="_blank" rel="noopener noreferrer">github ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main" tabindex="-1">
+
+    <!-- PAGE HERO -->
+    <section class="container page-hero">
+      <p class="eyebrow">the folder with the useful bits</p>
+      <h1>Things we<br><em>actually made.</em></h1>
+      <div class="page-hero__intro">
+        <span class="margin-note">no fake case studies here.</span>
+        <p>Some are shipped. Some are still held together by a hopeful CSS rule. Click a card for the longer story.</p>
+      </div>
+    </section>
+
+    <!-- PROJECTS + PHOTOS -->
+    <section class="container section-pad">
+      <p class="mono projects-loading" id="projectsLoading"></p>
+
+      <div class="project-grid"
+           id="projectGrid"
+           aria-live="polite"
+           aria-busy="true"></div>
+
+      <div class="photo-contact-sheet"
+           id="photoContactSheet"
+           role="region"
+           aria-label="The Spare Parts photo drawer"
+           tabindex="0"></div>
+
+      <!-- No-JS / crawler fallback -->
+      <noscript>
+        <div class="project-grid">
+          <article class="project-card">
+            <h3>Projects need JavaScript</h3>
+            <p>This page renders its project folder on the client. Enable JavaScript to browse, or email us at <a href="mailto:daddymaouu@gmail.com">daddymaouu@gmail.com</a>.</p>
+          </article>
+        </div>
+      </noscript>
+    </section>
+
+    <!-- PROJECT DIALOG -->
+    <dialog class="project-dialog"
+            id="projectDialog"
+            aria-labelledby="dialogTitle"
+            aria-describedby="dialogStory"
+            aria-modal="true">
+      <div class="project-dialog__inner">
+        <button class="dialog-close"
+                id="dialogClose"
+                type="button"
+                aria-label="Close project details">&times;</button>
+        <p class="eyebrow" id="dialogEyebrow">project notes</p>
+        <h2 id="dialogTitle"></h2>
+        <p id="dialogStory"></p>
+        <div class="tag-row" id="dialogTags"></div>
+        <noscript>
+          <p class="mono">Enable JavaScript to read full project notes.</p>
+        </noscript>
+      </div>
+    </dialog>
+
+    <!-- CLOSING SECTION -->
+    <section class="container section-pad">
+      <div class="page-hero__intro">
+        <h2 class="scribble-underline" id="wip">A work in progress.</h2>
+        <p>We keep the rough edges in the folder because they are usually where the useful bit is hiding.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__switches">
+        <button class="button button--quiet" id="nepaToggle" type="button">cut the light</button>
+        <button class="button button--quiet" id="themeToggle" type="button">night desk</button>
+      </div>
+      <div class="footer__links">
+        <a href="https://t.me/fwmoau" target="_blank" rel="noopener noreferrer">telegram</a>
+        <a href="https://x.com/fwmaou" target="_blank" rel="noopener noreferrer">x</a>
+        <a href="https://github.com/daddymaou/sparts" target="_blank" rel="noopener noreferrer">github</a>
+        <a href="mailto:daddymaouu@gmail.com">email</a>
+        <a href="humans.txt" rel="author">humans.txt</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
