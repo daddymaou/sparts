@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en" data-page="404">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+  <title>Lost — Spare Parts</title>
+  <meta name="description" content="This page is not in the drawer.">
+  <meta name="theme-color" content="#f5f1e8">
+  <meta name="robots" content="noindex">
+
+  <!-- Inline theme script — prevents flash of wrong theme -->
+  <script>
+    (function () {
+      try {
+        var KEY = "spare-parts:theme";
+        var saved = localStorage.getItem(KEY);
+        var system = matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = (saved === "day" || saved === "night")
+          ? saved
+          : (system ? "night" : "day");
+        document.documentElement.dataset.theme = theme;
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", theme === "night" ? "#0a0a0a" : "#f5f1e8");
+        document.documentElement.classList.add("theme-ready");
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="icon" href="assets/svg/mark.svg">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/path.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/doodles.css">
+
+  <noscript>
+    <style>
+      .preloader { display: none !important; }
+      .site-menu { display: none !important; }
+    </style>
+  </noscript>
+</head>
+<body>
+
+  <svg class="svg-defs" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute">
+    <defs>
+      <filter id="roughen">
+        <feTurbulence type="fractalNoise" baseFrequency=".025" numOctaves="2" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="2"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <div class="site-grain" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Spare Parts — home">
+      <span class="brand-mark" aria-hidden="true">SP</span>
+      <span>SPARE PARTS<small>software from a small desk</small></span>
+    </a>
+    <div class="header-aside">
+      <span class="mono">LAGOS / NIGERIA</span>
+      <label class="lowdata-control">
+        <input id="lowDataToggle" type="checkbox">
+        <span>low-data</span>
+      </label>
+      <button class="menu-button" id="menuButton" type="button"
+              aria-expanded="false" aria-controls="siteMenu" aria-haspopup="true">
+        menu
+      </button>
+    </div>
+  </header>
+
+  <nav class="tab-rail" aria-label="Main navigation">
+    <a href="index.html">home</a>
+    <a href="work.html">work</a>
+    <a href="lab.html">lab</a>
+    <a href="notes.html">notes</a>
+    <a href="hang.html">hang</a>
+  </nav>
+
+  <div class="site-menu" id="siteMenu" aria-hidden="true" role="dialog" aria-label="Site menu">
+    <div class="site-menu__inner">
+      <div>
+        <p class="eyebrow">small dev collective / lagos</p>
+        <p class="menu-intro">A desk, a few good people, and too many tabs open.</p>
+      </div>
+      <nav aria-label="Menu">
+        <a href="index.html">home</a>
+        <a href="work.html">work</a>
+        <a href="lab.html">lab</a>
+        <a href="notes.html">notes</a>
+        <a href="hang.html">hang</a>
+      </nav>
+      <div class="site-menu__footer">
+        <span class="mono">built by humans / mostly after lunch</span>
+        <a href="https://github.com/daddymaou/sparts" target="_blank" rel="noopener noreferrer">github ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main" tabindex="-1">
+
+    <section class="container page-hero error-hero">
+      <p class="eyebrow">error 404 · page not found</p>
+      <h1>This page is not<br><em>in the drawer.</em></h1>
+      <div class="page-hero__intro">
+        <span class="margin-note">we checked under the cables.</span>
+        <p>Either the URL changed, someone unplugged the right thing, or you typed it with one hand while holding suya. It happens.</p>
+      </div>
+
+      <div class="hero-actions">
+        <a class="button button--primary magnetic" href="index.html">Back to the desk <span aria-hidden="true">↗</span></a>
+        <a class="text-link" href="hang.html">Tell us what broke <span aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="error-doodle" aria-hidden="true">
+        <svg viewBox="0 0 400 200" role="img" aria-label="A hand-drawn laptop with a question mark">
+          <path d="M100 40h200v110H100z" />
+          <path d="M80 150h240l-20 20H100z" />
+          <path d="M180 90q0-15 20-15t20 15q0 10-15 15v10" />
+          <circle cx="205" cy="130" r="3" />
+        </svg>
+      </div>
+    </section>
+
+    <section class="container section-pad">
+      <div class="page-hero__intro">
+        <h2 class="scribble-underline">Where to go instead.</h2>
+        <p>Pick a direction. Any is better than a dead end.</p>
+      </div>
+
+      <div class="home-media-strip" style="margin-top:2rem">
+        <figure>
+          <a href="work.html" class="error-link">
+            <img loading="lazy" src="assets/media/photos/whiteboard.webp" width="1200" height="800" alt="">
+            <figcaption>work →</figcaption>
+          </a>
+        </figure>
+        <figure>
+          <a href="lab.html" class="error-link">
+            <img loading="lazy" src="assets/media/photos/desk-laptop.webp" width="1200" height="800" alt="">
+            <figcaption>lab →</figcaption>
+          </a>
+        </figure>
+        <figure>
+          <a href="notes.html" class="error-link">
+            <img loading="lazy" src="assets/media/photos/laptop-notes.webp" width="1200" height="800" alt="">
+            <figcaption>notes →</figcaption>
+          </a>
+        </figure>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__switches">
+        <button class="button button--quiet" id="nepaToggle" type="button">cut the light</button>
+        <button class="button button--quiet" id="themeToggle" type="button">night desk</button>
+      </div>
+      <div class="footer__links">
+        <a href="https://t.me/fwmoau" target="_blank" rel="noopener noreferrer">telegram</a>
+        <a href="https://x.com/fwmaou" target="_blank" rel="noopener noreferrer">x</a>
+        <a href="https://github.com/daddymaou/sparts" target="_blank" rel="noopener noreferrer">github</a>
+        <a href="mailto:daddymaouu@gmail.com">email</a>
+        <a href="humans.txt" rel="author">humans.txt</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
