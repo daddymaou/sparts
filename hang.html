@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en" data-page="hang">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+  <title>Hang — Spare Parts</title>
+  <meta name="description" content="Say hi to Spare Parts, a small Nigerian dev collective.">
+  <meta name="theme-color" content="#f5f1e8">
+  <link rel="canonical" href="https://spareparts.dev/hang.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spareparts.dev/hang.html">
+  <meta property="og:title" content="Hang — Spare Parts">
+  <meta property="og:description" content="Say hi. Bring a question, or send a meme that survived code review.">
+  <meta property="og:image" content="assets/media/photos/team-room.webp">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hang — Spare Parts">
+  <meta name="twitter:description" content="Say hi. Bring a question, or send a meme that survived code review.">
+  <meta name="twitter:image" content="assets/media/photos/team-room.webp">
+
+  <!-- Inline theme script — prevents flash of wrong theme -->
+  <script>
+    (function () {
+      try {
+        var KEY = "spare-parts:theme";
+        var saved = localStorage.getItem(KEY);
+        var system = matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = (saved === "day" || saved === "night")
+          ? saved
+          : (system ? "night" : "day");
+        document.documentElement.dataset.theme = theme;
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", theme === "night" ? "#0a0a0a" : "#f5f1e8");
+        document.documentElement.classList.add("theme-ready");
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="icon" href="assets/svg/mark.svg">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/path.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/doodles.css">
+
+  <noscript>
+    <style>
+      .preloader { display: none !important; }
+      .site-menu { display: none !important; }
+      .data-media { display: none !important; }
+    </style>
+  </noscript>
+</head>
+<body>
+
+  <svg class="svg-defs" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute">
+    <defs>
+      <filter id="roughen">
+        <feTurbulence type="fractalNoise" baseFrequency=".025" numOctaves="2" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="2"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <div class="preloader" id="preloader" role="status" aria-live="polite">
+    <div class="preloader__mark">COME HANG</div>
+    <p class="mono">checking the hotspot</p>
+  </div>
+
+  <div class="site-grain" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Spare Parts — home">
+      <span class="brand-mark" aria-hidden="true">SP</span>
+      <span>SPARE PARTS<small>software from a small desk</small></span>
+    </a>
+    <div class="header-aside">
+      <span class="mono">LAGOS / NIGERIA</span>
+      <label class="lowdata-control">
+        <input id="lowDataToggle" type="checkbox">
+        <span>low-data</span>
+      </label>
+      <button class="menu-button" id="menuButton" type="button"
+              aria-expanded="false" aria-controls="siteMenu" aria-haspopup="true">
+        menu
+      </button>
+    </div>
+  </header>
+
+  <nav class="tab-rail" aria-label="Main navigation">
+    <a href="index.html">home</a>
+    <a href="work.html">work</a>
+    <a href="lab.html">lab</a>
+    <a href="notes.html">notes</a>
+    <a href="hang.html" aria-current="page">hang</a>
+  </nav>
+
+  <div class="site-menu" id="siteMenu" aria-hidden="true" role="dialog" aria-label="Site menu">
+    <div class="site-menu__inner">
+      <div>
+        <p class="eyebrow">small dev collective / lagos</p>
+        <p class="menu-intro">A desk, a few good people, and too many tabs open.</p>
+      </div>
+      <nav aria-label="Menu">
+        <a href="index.html">home</a>
+        <a href="work.html">work</a>
+        <a href="lab.html">lab</a>
+        <a href="notes.html">notes</a>
+        <a href="hang.html" aria-current="page">hang</a>
+      </nav>
+      <div class="site-menu__footer">
+        <span class="mono">built by humans / mostly after lunch</span>
+        <a href="https://github.com/daddymaou/sparts" target="_blank" rel="noopener noreferrer">github ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main" tabindex="-1">
+
+    <!-- PAGE HERO -->
+    <section class="container page-hero">
+      <p class="eyebrow">the door is open</p>
+      <h1>Come hang<br><em>with us.</em></h1>
+      <div class="page-hero__intro">
+        <span class="margin-note">bring your own strong opinion about tabs.</span>
+        <p>We are a small dev collective in Nigeria. Sometimes we build together, sometimes we just compare notes and complain about network wahala.</p>
+      </div>
+    </section>
+
+    <!-- MAP + FORM -->
+    <section class="container section-pad">
+      <div class="hang-grid">
+
+        <div>
+          <div class="map-doodle">
+            <svg viewBox="0 0 100 160" role="img" aria-labelledby="mapTitle">
+              <title id="mapTitle">Hand-drawn map-like shape of Nigeria</title>
+              <path aria-hidden="true" d="M29 8 53 4l19 17-3 18 13 17-8 22 5 18-17 28-19-6-12 15-17-17-12-2-5-17-10-7 8-18-9-12 15-15-4-15z"/>
+              <path aria-hidden="true" d="M47 91q6-8 13 0l-4 6 4 8H44l4-8z"/>
+            </svg>
+            <span class="map-doodle__pin" aria-hidden="true">we are here<br>↓</span>
+          </div>
+          <p class="body-copy map-note">
+            The group chat is usually the easiest first move. We are around Telegram, GitHub, X, and whatever side channel is currently surviving.
+          </p>
+        </div>
+
+        <form class="contact-form" id="contactForm" novalidate>
+          <p class="eyebrow" id="contactHeading">leave a note</p>
+
+          <div class="field">
+            <label for="contactName">your name</label>
+            <input id="contactName"
+                   name="name"
+                   type="text"
+                   required
+                   autocomplete="name"
+                   aria-required="true"
+                   aria-describedby="contactNameError">
+            <small id="contactNameError" data-error-for="contactName" role="alert" aria-live="polite"></small>
+          </div>
+
+          <div class="field">
+            <label for="contactEmail">email, if you want a reply</label>
+            <input id="contactEmail"
+                   name="email"
+                   type="email"
+                   autocomplete="email"
+                   aria-describedby="contactEmailError">
+            <small id="contactEmailError" data-error-for="contactEmail" role="alert" aria-live="polite"></small>
+          </div>
+
+          <div class="field">
+            <label for="contactMessage">what are we talking about?</label>
+            <textarea id="contactMessage"
+                      name="message"
+                      rows="5"
+                      required
+                      maxlength="2000"
+                      aria-required="true"
+                      aria-describedby="contactMessageError"></textarea>
+            <small id="contactMessageError" data-error-for="contactMessage" role="alert" aria-live="polite"></small>
+          </div>
+
+          <button class="button button--primary" type="submit">
+            send the note <span aria-hidden="true">↗</span>
+          </button>
+
+          <!-- Channel picker — revealed after a valid submit -->
+          <div class="contact-channels" id="contactChannels" hidden>
+            <p class="eyebrow">pick a channel</p>
+            <div class="contact-channels__row">
+              <a class="contact-channel" id="channelWhatsApp" target="_blank" rel="noopener noreferrer">
+                <span class="contact-channel__icon" aria-hidden="true">💬</span>
+                <span>WhatsApp</span>
+              </a>
+              <a class="contact-channel" id="channelTelegram" target="_blank" rel="noopener noreferrer">
+                <span class="contact-channel__icon" aria-hidden="true">✈️</span>
+                <span>Telegram</span>
+              </a>
+              <a class="contact-channel" id="channelX" target="_blank" rel="noopener noreferrer">
+                <span class="contact-channel__icon" aria-hidden="true">𝕏</span>
+                <span>X</span>
+              </a>
+              <a class="contact-channel" id="channelEmail">
+                <span class="contact-channel__icon" aria-hidden="true">✉️</span>
+                <span>Email</span>
+              </a>
+            </div>
+            <p class="margin-note">no backend here — pick where you want the note to land.</p>
+          </div>
+
+          <noscript>
+            <p class="mono">
+              This form needs JavaScript. You can also reach us on
+              <a href="https://t.me/fwmoau" target="_blank" rel="noopener noreferrer">Telegram</a>.
+            </p>
+          </noscript>
+        </form>
+
+      </div>
+    </section>
+
+    <!-- MEDIA STRIP -->
+    <section class="container section-pad">
+      <div class="home-media-strip">
+
+        <figure>
+          <img loading="lazy"
+               src="assets/media/photos/street-light.webp"
+               width="1200" height="800"
+               alt="City street lights">
+          <figcaption>when the traffic clears</figcaption>
+        </figure>
+
+        <figure>
+          <video class="data-media"
+                 data-src="assets/media/video/night-window.mp4"
+                 poster="assets/media/posters/night-window.jpg"
+                 muted loop playsinline preload="none"
+                 aria-label="Night scene through a window">
+            <noscript>
+              <img src="assets/media/posters/night-window.jpg" alt="Night scene through a window">
+            </noscript>
+          </video>
+          <figcaption>rain makes a good excuse</figcaption>
+        </figure>
+
+        <figure>
+          <img loading="lazy"
+               src="assets/media/photos/team-room.webp"
+               width="1200" height="800"
+               alt="People working together indoors">
+          <figcaption>pull up a chair</figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__switches">
+        <button class="button button--quiet" id="nepaToggle" type="button">cut the light</button>
+        <button class="button button--quiet" id="themeToggle" type="button">night desk</button>
+      </div>
+      <div class="footer__links">
+        <a href="https://t.me/fwmoau" target="_blank" rel="noopener noreferrer">telegram</a>
+        <a href="https://x.com/fwmaou" target="_blank" rel="noopener noreferrer">x</a>
+        <a href="https://github.com/daddymaou/sparts" target="_blank" rel="noopener noreferrer">github</a>
+        <a href="mailto:daddymaouu@gmail.com">email</a>
+        <a href="humans.txt" rel="author">humans.txt</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
