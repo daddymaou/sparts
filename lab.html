@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en" data-page="lab">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+  <title>Lab — Spare Parts</title>
+  <meta name="description" content="The Spare Parts lab: doodles, excuses, danfo destinations and late-night experiments.">
+  <meta name="theme-color" content="#f5f1e8">
+  <link rel="canonical" href="https://spareparts.dev/lab.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spareparts.dev/lab.html">
+  <meta property="og:title" content="Lab — Spare Parts">
+  <meta property="og:description" content="Tiny toys, stubborn bugs, and experiments made at 2:07am.">
+  <meta property="og:image" content="assets/media/posters/desk-hands.jpg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lab — Spare Parts">
+  <meta name="twitter:description" content="Tiny toys, stubborn bugs, and experiments made at 2:07am.">
+  <meta name="twitter:image" content="assets/media/posters/desk-hands.jpg">
+
+  <!-- Inline theme script — prevents flash of wrong theme -->
+  <script>
+    (function () {
+      try {
+        var KEY = "spare-parts:theme";
+        var saved = localStorage.getItem(KEY);
+        var system = matchMedia("(prefers-color-scheme: dark)").matches;
+        var theme = (saved === "day" || saved === "night")
+          ? saved
+          : (system ? "night" : "day");
+        document.documentElement.dataset.theme = theme;
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", theme === "night" ? "#0a0a0a" : "#f5f1e8");
+        document.documentElement.classList.add("theme-ready");
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="icon" href="assets/svg/mark.svg">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/path.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/doodles.css">
+
+  <noscript>
+    <style>
+      .preloader { display: none !important; }
+      .site-menu { display: none !important; }
+      .data-media { display: none !important; }
+    </style>
+  </noscript>
+</head>
+<body>
+
+  <svg class="svg-defs" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute">
+    <defs>
+      <filter id="roughen">
+        <feTurbulence type="fractalNoise" baseFrequency=".025" numOctaves="2" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="2"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <div class="preloader" id="preloader" role="status" aria-live="polite">
+    <div class="preloader__mark">THE LAB</div>
+    <p class="mono">do not touch the red button</p>
+  </div>
+
+  <div class="site-grain" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Spare Parts — home">
+      <span class="brand-mark" aria-hidden="true">SP</span>
+      <span>SPARE PARTS<small>software from a small desk</small></span>
+    </a>
+    <div class="header-aside">
+      <span class="mono">LAGOS / NIGERIA</span>
+      <label class="lowdata-control">
+        <input id="lowDataToggle" type="checkbox">
+        <span>low-data</span>
+      </label>
+      <button class="menu-button" id="menuButton" type="button"
+              aria-expanded="false" aria-controls="siteMenu" aria-haspopup="true">
+        menu
+      </button>
+    </div>
+  </header>
+
+  <nav class="tab-rail" aria-label="Main navigation">
+    <a href="index.html">home</a>
+    <a href="work.html">work</a>
+    <a href="lab.html" aria-current="page">lab</a>
+    <a href="notes.html">notes</a>
+    <a href="hang.html">hang</a>
+  </nav>
+
+  <div class="site-menu" id="siteMenu" aria-hidden="true" role="dialog" aria-label="Site menu">
+    <div class="site-menu__inner">
+      <div>
+        <p class="eyebrow">small dev collective / lagos</p>
+        <p class="menu-intro">A desk, a few good people, and too many tabs open.</p>
+      </div>
+      <nav aria-label="Menu">
+        <a href="index.html">home</a>
+        <a href="work.html">work</a>
+        <a href="lab.html" aria-current="page">lab</a>
+        <a href="notes.html">notes</a>
+        <a href="hang.html">hang</a>
+      </nav>
+      <div class="site-menu__footer">
+        <span class="mono">built by humans / mostly after lunch</span>
+        <a href="https://github.com/daddymaou/sparts" target="_blank" rel="noopener noreferrer">github ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main" tabindex="-1">
+
+    <!-- PAGE HERO -->
+    <section class="container page-hero">
+      <p class="eyebrow">things made at 2:07am</p>
+      <h1>The lab is<br><em>open.</em></h1>
+      <div class="page-hero__intro">
+        <span class="margin-note">please return the screwdriver.</span>
+        <p>No big product thinking here. Just tiny toys, stubborn bugs, and experiments that may accidentally become useful.</p>
+      </div>
+    </section>
+
+    <!-- DOODLE WALL + EXCUSE BOX -->
+    <section class="container section-pad">
+      <div class="hang-grid">
+
+        <div class="doodle-wall">
+          <p class="eyebrow" id="doodleLabel">doodle wall / local only</p>
+          <canvas id="doodleCanvas"
+                  width="800" height="500"
+                  role="img"
+                  aria-labelledby="doodleLabel"
+                  aria-describedby="doodleHelp">
+            Your browser does not support the canvas element.
+          </canvas>
+          <p id="doodleHelp" class="mono">
+            Draw with your pointer or finger. Your scribbles stay in this browser.
+          </p>
+          <div class="toy-toolbar">
+            <span>your scribbles stay in this browser</span>
+            <button id="clearDoodle" type="button">clear wall</button>
+          </div>
+        </div>
+
+        <div class="excuse-box">
+          <span class="eyebrow">why is the build broken?</span>
+          <p id="excuseText" aria-live="polite">Click the button. We know the feeling.</p>
+          <button class="button button--quiet" id="excuseButton" type="button">give me an excuse ↻</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DANFO BOARD -->
+    <section class="container section-pad">
+      <div class="danfo-board">
+        <div class="danfo-marquee" id="danfoMarquee" aria-hidden="true">
+          YABA — VI — CMS — LEKKI — IKEJA — INTERNET CAFE — YABA — VI — CMS — LEKKI — IKEJA — INTERNET CAFE —
+        </div>
+      </div>
+      <label class="mono danfo-label" for="danfoInput">Change the destination board</label>
+      <input class="danfo-input"
+             id="danfoInput"
+             type="text"
+             maxlength="120"
+             value="YABA — VI — CMS — LEKKI — IKEJA — INTERNET CAFE"
+             aria-describedby="danfoHelp">
+      <p id="danfoHelp" class="mono">Keep it under 120 characters.</p>
+    </section>
+
+    <!-- BUG TOY -->
+    <section class="container section-pad">
+      <div class="hang-grid">
+        <div>
+          <p class="eyebrow">one more toy</p>
+          <h2>Put the bug<br><em>in its place.</em></h2>
+          <p class="body-copy bug-intro">Drag a bug into the fixed tray. This is not project management. It is just emotionally satisfying.</p>
+        </div>
+        <div class="bug-toy">
+          <div class="bug-pile" id="bugPile" role="list" aria-label="Open bugs">
+            <span class="eyebrow">open bugs</span>
+            <noscript><p class="mono">Enable JavaScript to play.</p></noscript>
+          </div>
+          <div class="bug-tray" id="bugTray" role="list" aria-label="Fixed-ish bugs">
+            <span class="eyebrow">fixed-ish</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAPE CARD VIDEO -->
+    <section class="container section-pad">
+      <div class="tape-card">
+        <video class="data-media"
+               data-src="assets/media/video/desk-hands.mp4"
+               poster="assets/media/posters/desk-hands.jpg"
+               muted loop playsinline preload="none"
+               aria-label="Hands working at a desk">
+          <noscript>
+            <img src="assets/media/posters/desk-hands.jpg" alt="Hands working at a desk">
+          </noscript>
+        </video>
+        <p class="margin-note">sometimes the bug is the meeting.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__grid">
+      <div class="footer__switches">
+        <button class="button button--quiet" id="nepaToggle" type="button">cut the light</button>
+        <button class="button button--quiet" id="themeToggle" type="button">night desk</button>
+      </div>
+      <div class="footer__links">
+        <a href="https://t.me/fwmoau" target="_blank" rel="noopener noreferrer">telegram</a>
+        <a href="https://x.com/fwmaou" target="_blank" rel="noopener noreferrer">x</a>
+        <a href="https://github.com/daddymaou/sparts" target="_blank" rel="noopener noreferrer">github</a>
+        <a href="mailto:daddymaouu@gmail.com">email</a>
+        <a href="humans.txt" rel="author">humans.txt</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
