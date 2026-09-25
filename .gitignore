@@ -1,0 +1,52 @@
+# ─────────────────────────────────────────────
+# Spare Parts — .gitignore
+# ─────────────────────────────────────────────
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editors and IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Node (only if you ever add a build step)
+node_modules/
+.npm
+.yarn/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build output (only if you ever add one)
+dist/
+build/
+.cache/
+
+# Temporary
+tmp/
+temp/
+*.tmp
+
+# Backups
+backup-*/
+*.bak
