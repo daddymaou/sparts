@@ -1,0 +1,115 @@
+/* ================================================================= */
+/* Fuzzy Bubbles — display font (headlines, preloader)               */
+/* ================================================================= */
+
+@font-face {
+  font-family: "Fuzzy Bubbles";
+  src: url("../fonts/fuzzy-bubbles.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  /* Latin-1 + Latin Extended-A + arrows (2190–21FF) */
+  unicode-range:
+    U+0000-00FF,
+    U+0131,
+    U+0152-0153,
+    U+02BB-02BC,
+    U+02C6,
+    U+02DA,
+    U+02DC,
+    U+2000-206F,
+    U+2070-209F,
+    U+20A0-20CF,
+    U+2100-214F,
+    U+2190-21FF,
+    U+2200-22FF;
+}
+
+@font-face {
+  font-family: "Fuzzy Bubbles";
+  src: url("../fonts/fuzzy-bubbles-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF,
+    U+0131,
+    U+0152-0153,
+    U+02BB-02BC,
+    U+02C6,
+    U+02DA,
+    U+02DC,
+    U+2000-206F,
+    U+2070-209F,
+    U+20A0-20CF,
+    U+2100-214F,
+    U+2190-21FF,
+    U+2200-22FF;
+}
+
+/* ================================================================= */
+/* Gochi Hand — handwritten accent (em, figcaptions, scribbles)       */
+/* ================================================================= */
+
+@font-face {
+  font-family: "Gochi Hand";
+  src: url("../fonts/gochi-hand.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ================================================================= */
+/* Nunito — body copy                                                 */
+/* ================================================================= */
+
+@font-face {
+  font-family: "Nunito";
+  src: url("../fonts/nunito.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  /* Body copy: `optional` avoids FOUT and CLS. */
+  font-display: optional;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("../fonts/nunito-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: optional;
+}
+
+/* ================================================================= */
+/* Martian Mono — code, eyebrows, small labels                        */
+/* ================================================================= */
+
+@font-face {
+  font-family: "Martian Mono";
+  src: url("../fonts/martian-mono.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*
+ * If martian-mono.woff2 is a variable font covering 400–700,
+ * replace the above with:
+ *
+ *   @font-face {
+ *     font-family: "Martian Mono";
+ *     src: url("../fonts/martian-mono.woff2") format("woff2-variations");
+ *     font-weight: 100 900;
+ *     font-style: normal;
+ *     font-display: swap;
+ *   }
+ *
+ * Otherwise add an explicit 700 file:
+ *
+ *   @font-face {
+ *     font-family: "Martian Mono";
+ *     src: url("../fonts/martian-mono-700.woff2") format("woff2");
+ *     font-weight: 700;
+ *     font-display: swap;
+ *   }
+ */
