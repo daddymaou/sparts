@@ -1,0 +1,27 @@
+/* TEAM */
+  Collective: Spare Parts
+  Contact: daddymaouu@gmail.com
+  GitHub: https://github.com/daddymaou/sparts
+  Telegram: https://t.me/fwmoau
+  X: https://x.com/fwmaou
+
+/* SITE */
+  Last update: 2026-01-15
+  Language: English
+  Doctype: HTML5
+  Framework: None — plain HTML, CSS, and vanilla JavaScript
+  Build: Hand-written. No bundler, no build step.
+  Analytics: None
+  Trackers: None
+  Cookies: None
+
+/* THANKS */
+  You, for reading this far.
+  Everyone who ever kept a drawer full of cables
+  "just in case".
+
+/* NOTES */
+  This site is a small dev collective's public face.
+  It is intentionally lightweight.
+  If you're reading this in a browser, you're already
+  seeing the whole thing — there is no hidden version.
