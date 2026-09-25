@@ -1,0 +1,323 @@
+/* ================================================================= */
+/* View transitions (Chromium-only, opt-in)                          */
+/* ================================================================= */
+
+/*
+ * Enables smooth cross-document transitions on navigation.
+ * Removing this restores the default instant page loads.
+ * If you see "AbortError: Transition was skipped" in the console,
+ * delete this block.
+ */
+@view-transition {
+  navigation: auto;
+}
+
+/* ================================================================= */
+/* Horizontal overflow safety — prevents scroll on ALL pages         */
+/* ================================================================= */
+
+html {
+  overflow-x: hidden;   /* fallback for older browsers */
+  overflow-x: clip;     /* modern — doesn't break position: fixed */
+}
+
+body {
+  overflow-x: hidden;   /* fallback */
+  overflow-x: clip;     /* modern */
+  max-width: 100%;
+}
+
+/* ================================================================= */
+/* Reset                                                              */
+/* ================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: auto; /* JS controls smooth scroll explicitly */
+  background: var(--cream);
+}
+
+body {
+  margin: 0;
+  background-color: var(--cream);
+  color: var(--ink);
+  font-family: var(--body);
+}
+
+html.theme-ready body {
+  transition: background-color 0.4s, color 0.4s;
+}
+
+/* iOS-safe scroll lock while menus/modals are open. */
+body.is-locked {
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+input,
+textarea,
+select {
+  /* Prevent iOS Safari from zooming on focus. */
+  font-size: max(16px, 1rem);
+}
+
+button {
+  color: inherit;
+  cursor: pointer;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+::selection {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--clay);
+  outline-offset: 3px;
+}
+
+/* ================================================================= */
+/* Typography                                                         */
+/* ================================================================= */
+
+h1,
+h2,
+h3,
+p,
+figure,
+blockquote,
+pre,
+ul,
+ol,
+dl,
+dd,
+hr,
+fieldset {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+}
+
+h2 {
+  font-size: clamp(3rem, 7vw, 7.6rem);
+}
+
+em {
+  font-family: var(--hand);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+/* ================================================================= */
+/* Layout helpers                                                     */
+/* ================================================================= */
+
+.container {
+  width: min(calc(100% - 2 * var(--gutter)), var(--max));
+  margin-inline: auto;
+}
+
+.section-pad {
+  padding-block: clamp(4.5rem, 11vw, 11rem);
+}
+
+/* ================================================================= */
+/* Typographic utilities                                              */
+/* ================================================================= */
+
+.eyebrow,
+.mono {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  line-height: 1.35;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  color: var(--ink-soft);
+}
+
+.body-copy {
+  max-width: 50ch;
+  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+  line-height: 1.35;
+}
+
+.scribble-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.scribble-underline::after {
+  content: "";
+  position: absolute;
+  left: -3%;
+  right: -3%;
+  bottom: -0.15em;
+  height: 0.45em;
+  border-bottom: 3px solid var(--clay);
+  border-radius: 50%;
+  transform: rotate(-2deg);
+}
+
+/* ================================================================= */
+/* Accessibility helpers                                              */
+/* ================================================================= */
+
+.sr-only,
+.skip-link,
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link:focus {
+  width: auto;
+  height: auto;
+  margin: 1rem;
+  padding: 0.7rem 1rem;
+  clip-path: none;
+  background: var(--ink);
+  color: var(--cream);
+  z-index: 100;
+}
+
+/* ================================================================= */
+/* Site grain (decorative)                                            */
+/* ================================================================= */
+
+.site-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+@supports not (mix-blend-mode: multiply) {
+  .site-grain {
+    display: none;
+  }
+}
+
+/* ================================================================= */
+/* SVG defs sprite                                                    */
+/* ================================================================= */
+
+.svg-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* ================================================================= */
+/* Preloader                                                          */
+/* ================================================================= */
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  background: var(--cream);
+  transition: opacity 0.4s, visibility 0.4s;
+}
+
+:root[data-theme="night"] .preloader {
+  background: var(--ink);
+}
+
+.preloader.is-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader__mark {
+  font: 700 clamp(2rem, 7vw, 6rem) / 0.8 var(--display);
+  color: var(--blue);
+  transform: rotate(-4deg);
+  animation: drop 0.7s var(--ease) both;
+}
+
+.preloader p {
+  position: absolute;
+  bottom: 2rem;
+  color: var(--ink-soft);
+}
+
+@keyframes drop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) rotate(-12deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-4deg);
+  }
+}
+
+/* ================================================================= */
+/* Reduced motion                                                     */
+/* ================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .site-grain {
+    display: none;
+  }
+}
