@@ -2,35 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://spareparts.dev/</loc>
+    <loc>https://daddymaou.github.io/sparts/</loc>
     <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://spareparts.dev/work.html</loc>
+    <loc>https://daddymaou.github.io/sparts/work.html</loc>
     <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://spareparts.dev/lab.html</loc>
+    <loc>https://daddymaou.github.io/sparts/lab.html</loc>
     <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://spareparts.dev/notes.html</loc>
+    <loc>https://daddymaou.github.io/sparts/notes.html</loc>
     <lastmod>2026-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://spareparts.dev/hang.html</loc>
+    <loc>https://daddymaou.github.io/sparts/hang.html</loc>
     <lastmod>2026-01-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>

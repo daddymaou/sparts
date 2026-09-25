@@ -1,5 +1,5 @@
 # Spare Parts — robots.txt
-# https://spareparts.dev/robots.txt
+# https://daddymaou.github.io/sparts/robots.txt
 
 User-agent: *
 Allow: /
@@ -8,4 +8,4 @@ Allow: /
 # No tracking, no ads, no scrapers worth blocking.
 
 # Point crawlers at the sitemap
-Sitemap: https://spareparts.dev/sitemap.xml
+Sitemap: https://daddymaou.github.io/sparts/sitemap.xml
