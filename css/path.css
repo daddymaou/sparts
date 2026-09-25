@@ -1,0 +1,255 @@
+/* ================================================================= */
+/* Path wrapper                                                      */
+/* ================================================================= */
+
+.path-wrap {
+  position: relative;
+  min-height: 75rem;
+}
+
+.path-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.path-line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+}
+
+.path-line--base {
+  stroke: var(--line);
+  stroke-dasharray: 2 13; /* dotted */
+}
+
+.path-line--progress {
+  stroke: var(--blue);
+  /*
+   * NOTE: Do NOT set stroke-dasharray here.
+   * JS computes the full length and uses stroke-dashoffset to
+   * reveal the line progressively. Setting a fixed dasharray here
+   * would break the reveal animation.
+   */
+}
+
+/* ================================================================= */
+/* Bus                                                               */
+/* ================================================================= */
+
+.path-bus {
+  fill: var(--yellow);
+  stroke: var(--ink);
+  stroke-width: 1.5;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.path-bus path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.path-bus circle {
+  fill: var(--ink);
+  stroke: none;
+}
+
+/* ================================================================= */
+/* Path nodes                                                        */
+/* ================================================================= */
+
+.path-node {
+  position: relative;
+  z-index: 1;
+  min-height: 14rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.path-node:nth-child(even) .path-node__card {
+  grid-column: 2;
+}
+
+/* ================================================================= */
+/* Node card — irregular shape without clipping the focus ring       */
+/* ================================================================= */
+
+.path-node__card {
+  position: relative;
+  width: min(100% - 2rem, 31rem);
+  padding: 1.4rem 1.5rem;
+  background: transparent; /* painted by ::before so clip-path doesn't clip focus */
+  border: 0;
+  box-shadow: none;
+  cursor: pointer;
+  transition: transform 0.4s var(--ease);
+  /* NO clip-path here — keep the focus ring visible. */
+}
+
+/* Painted irregular card behind the content. */
+.path-node__card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  box-shadow: 5px 6px 0 var(--blue);
+  clip-path: polygon(1% 3%, 98% 0, 100% 96%, 2% 100%);
+  z-index: -1;
+  transition: background-color 0.2s;
+}
+
+.path-node:nth-child(odd) .path-node__card {
+  justify-self: end;
+  transform: rotate(-1deg);
+}
+
+.path-node:nth-child(even) .path-node__card {
+  justify-self: start;
+  transform: rotate(1deg);
+}
+
+/* Bumped specificity so hover beats nth-child. */
+.path-node .path-node__card:hover,
+.path-node.is-active .path-node__card {
+  transform: translateY(-0.4rem) rotate(0);
+}
+
+.path-node .path-node__card:hover::before,
+.path-node.is-active .path-node__card::before {
+  background: var(--yellow);
+}
+
+.path-node__card:focus-visible {
+  outline: 3px solid var(--clay);
+  outline-offset: 4px;
+}
+
+/* Connection dot — lives on the parent so the card's clip-path
+   doesn't hide it. */
+.path-node::after {
+  content: "";
+  position: absolute;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 3px solid var(--clay);
+  border-radius: 50%;
+  background: var(--cream);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.path-node:nth-child(odd)::after {
+  right: 50%;
+  /* sit just outside the card edge */
+  margin-right: 0;
+}
+
+.path-node:nth-child(even)::after {
+  left: 50%;
+}
+
+/* ================================================================= */
+/* Node content                                                      */
+/* ================================================================= */
+
+.path-node__icon {
+  width: 2.2rem;
+  height: 2.2rem;
+  color: var(--clay);
+  margin-bottom: 1rem;
+}
+
+.path-node__icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.path-node h3 {
+  font: 700 clamp(1.8rem, 3vw, 3.2rem) / 0.9 var(--display);
+  margin-bottom: 0.6rem;
+}
+
+.path-node p {
+  color: var(--ink-soft);
+  line-height: 1.3;
+  max-width: 34ch;
+}
+
+/* ================================================================= */
+/* Debug dots                                                        */
+/* ================================================================= */
+
+.debug-dot {
+  position: absolute;
+  z-index: 3;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--clay);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* ================================================================= */
+/* Responsive                                                        */
+/* ================================================================= */
+
+@media (max-width: 767px) {
+  .path-wrap {
+    min-height: 120rem;
+  }
+
+  /*
+   * Keep the SVG full-width. JS places points at x=16 on mobile;
+   * shrinking the SVG to 2px wide breaks the path scaling.
+   */
+  .path-svg {
+    /* no width override — stays 100% */
+  }
+
+  .path-node {
+    display: block;
+    min-height: 18rem;
+    padding-left: 3rem;
+  }
+
+  .path-node:nth-child(even) .path-node__card,
+  .path-node:nth-child(odd) .path-node__card {
+    width: 100%;
+    transform: none;
+  }
+
+  .path-node.is-active .path-node__card {
+    transform: translateX(0.3rem);
+  }
+
+  /* Connection dot on mobile: on the left side, vertically centered. */
+  .path-node::after {
+    left: -1.3rem;
+    right: auto;
+    top: 50%;
+  }
+
+  .path-node:nth-child(odd)::after,
+  .path-node:nth-child(even)::after {
+    left: -1.3rem;
+    right: auto;
+  }
+}
