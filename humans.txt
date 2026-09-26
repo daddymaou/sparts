@@ -2,7 +2,7 @@
   Collective: Spare Parts
   Contact: daddymaouu@gmail.com
   GitHub: https://github.com/daddymaou/sparts
-  Telegram: https://t.me/fwmoau
+  Telegram: https://t.me/fwmaou
   X: https://x.com/fwmaou
 
 /* SITE */
